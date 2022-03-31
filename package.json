@@ -1,7 +1,7 @@
 {
-  "name": "electron-vue3-ts-quick-start",
+  "name": "meta-data-manager",
   "version": "0.1.0",
-  "description": "Electron Vue3 Typscript Quick Start",
+  "description": "Meta Data Manager",
   "author": "You",
   "private": true,
   "main": "electron/main.js",
@@ -19,8 +19,20 @@
     "dist:all": "npm run build:prod && electron-builder --mac --linux --windows"
   },
   "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/vue-fontawesome": "^2.0.6",
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.10",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
+    "electron-is-packaged": "^1.0.2",
+    "electron-prompt": "^1.7.0",
+    "node-osascript": "^2.1.0",
+    "sequelize": "^6.17.0",
+    "sqlite3": "^5.0.2",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vuex": "^4.0.0-0"
@@ -48,5 +60,29 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3"
+  },
+  "build": {
+    "directories": {
+      "output": "out"
+    },
+    "extraResources": [
+      "resources"
+    ],
+    "files": [
+      "!**",
+      "!**/**",
+      "dist",
+      "electron",
+      "package.json",
+      "resources/**",
+      "node_modules/**"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "cyfyrifilefe",
+        "repo": "desktop"
+      }
+    ]
   }
 }

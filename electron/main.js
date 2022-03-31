@@ -26,8 +26,14 @@ const createWindow = async () => {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
+    frame: false,
+    // kiosk: true,
+    autoHideMenuBar: true,
+    titleBarStyle: 'hiddenInset',
     webPreferences: {
       contextIsolation: true,
+      enableRemoteModule: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
@@ -53,6 +59,10 @@ app.on('ready', () => {
     // On macOS it's common to re-create a window in the app when the dock icon
     // is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+  win.maximize();
+  win.webContents.once('ready-to-show', function (){
+      win.show();
   });
 });
 
